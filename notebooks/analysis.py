@@ -40,3 +40,34 @@ plt.title('Total Contribution: Repeat vs One-time Donors')
 plt.ylabel('Total Donation Amount ($)')
 plt.savefig(os.path.join(output_dir, 'repeat_donors.png'))
 plt.close()
+
+# Analysis 2: Monthly Trends
+df['month_year'] = df['donation_date'].dt.to_period('M')
+monthly_trends = df.groupby('month_year')['donation_amount'].sum().reset_index()
+monthly_trends['month_year'] = monthly_trends['month_year'].astype(str)
+
+# Visualization 2: Donation Trends
+plt.figure(figsize=(12, 6))
+sns.lineplot(data=monthly_trends, x='month_year', y='donation_amount', marker='o', linewidth=2.5, color='#FF5722')
+plt.title('Monthly Donation Trends (2023 - 2025)')
+plt.xlabel('Month')
+plt.ylabel('Total Donation Amount ($)')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.savefig(os.path.join(output_dir, 'donations_trend.png'))
+plt.close()
+
+# Additional Metrics for JSON
+total_donations = df['donation_amount'].sum()
+avg_donation = df['donation_amount'].mean()
+total_donors = df['donor_id'].nunique()
+repeat_donor_count = len(repeat_donors)
+top_campaign = df.groupby('campaign_type')['donation_amount'].sum().idxmax()
+
+summary_stats = {
+    "total_donations": round(total_donations, 2),
+    "avg_donation": round(avg_donation, 2),
+    "total_donors": int(total_donors),
+    "repeat_donor_count": int(repeat_donor_count),
+    "top_campaign": str(top_campaign)
+}
