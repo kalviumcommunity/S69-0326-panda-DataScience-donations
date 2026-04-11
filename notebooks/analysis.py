@@ -64,13 +64,7 @@ total_donors = df['donor_id'].nunique()
 repeat_donor_count = len(repeat_donors)
 top_campaign = df.groupby('campaign_type')['donation_amount'].sum().idxmax()
 
-summary_stats = {
-    "total_donations": round(total_donations, 2),
-    "avg_donation": round(avg_donation, 2),
-    "total_donors": int(total_donors),
-    "repeat_donor_count": int(repeat_donor_count),
-    "top_campaign": str(top_campaign)
-}
+
 
 # Save JSON
 website_data_dir = os.path.join(base_dir, 'website', 'data')
