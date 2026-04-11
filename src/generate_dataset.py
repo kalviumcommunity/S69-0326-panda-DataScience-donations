@@ -49,3 +49,20 @@ for i in range(num_records):
     data.append(record)
 
 df = pd.DataFrame(data)
+
+# Introduce some missing values (for cleaning practice)
+for col in ["campaign_type", "payment_method"]:
+    df.loc[df.sample(frac=0.02).index, col] = None
+
+# Introduce duplicates
+df = pd.concat([df, df.sample(frac=0.02)], ignore_index=True)
+
+# Shuffle dataset
+df = df.sample(frac=1).reset_index(drop=True)
+
+# Save dataset
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+output_path = os.path.join(base_dir, "raw_data", "donations_raw.csv")
+df.to_csv(output_path, index=False)
+
+print("Dataset generated successfully!")
