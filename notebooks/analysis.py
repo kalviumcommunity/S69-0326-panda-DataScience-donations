@@ -71,3 +71,11 @@ summary_stats = {
     "repeat_donor_count": int(repeat_donor_count),
     "top_campaign": str(top_campaign)
 }
+
+# Save JSON
+website_data_dir = os.path.join(base_dir, 'website', 'data')
+os.makedirs(website_data_dir, exist_ok=True)
+with open(os.path.join(website_data_dir, 'summary_stats.json'), 'w') as f:
+    json.dump(summary_stats, f, indent=4)
+
+print("Analysis completed, charts saved to output/charts/, and summary stats saved to website/data/")
