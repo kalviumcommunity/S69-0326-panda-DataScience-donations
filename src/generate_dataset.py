@@ -20,3 +20,14 @@ end_date = datetime(2025, 1, 1)
 
 def random_date():
     return start_date + timedelta(days=random.randint(0, (end_date - start_date).days))
+
+
+# Donation amounts (skewed realistic distribution)
+def generate_amount():
+    return round(np.random.exponential(scale=200) + 10, 2)
+
+# Campaign types
+campaigns = ["Education", "Health", "Disaster Relief", "Environment", "Animal Welfare"]
+
+# Payment methods
+payment_methods = ["UPI", "Credit Card", "Debit Card", "Net Banking"]
