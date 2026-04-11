@@ -1,49 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Donor Insights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Insights Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
+    <div class="glass-bg"></div>
+    
     <div class="container">
         <header>
             <h1>Donor Behavior Analysis</h1>
+            <p class="subtitle">Data-driven insights for non-profit growth</p>
         </header>
 
+        <section class="stats-overview" id="stats-grid">
+            <div class="stat-card">
+                <span class="stat-label">Total Donations</span>
+                <span class="stat-value" id="total-donations">Loading...</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Avg. Donation</span>
+                <span class="stat-value" id="avg-donation">Loading...</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Total Donors</span>
+                <span class="stat-value" id="total-donors">Loading...</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Repeat Donors</span>
+                <span class="stat-value" id="repeat-donors-count">Loading...</span>
+            </div>
+        </section>
+
         <section class="problem-statement">
-            <h2>Problem Statement</h2>
-            <p>Non-profits struggle to understand donor behavior. Our goal is to identify donor patterns, high fundraising periods, and effectiveness of different campaigns.</p>
+            <h2>The Challenge</h2>
+            <p>Non-profits often operate with limited visibility into donor lifecycle and campaign effectiveness. This analysis aims to bridge that gap by identifying high-value periods and donor retention patterns.</p>
         </section>
 
-        <section>
-            <h2>Key Insights</h2>
-            <ul>
-                <li>Repeat donors contribute significantly to total funding.</li>
-                <li>Donations show clear cyclical trends with peaks in specific months.</li>
-                <li>Small but frequent donations form the foundation of fundraising efforts.</li>
-            </ul>
-        </section>
+        <section class="main-content">
+            <div class="insights-panel">
+                <h2>Key Findings</h2>
+                <ul class="insights-list">
+                    <li><strong>Retention is Key:</strong> Repeat donors provide the stable foundation for long-term sustainability.</li>
+                    <li><strong>Cyclical trends:</strong> Peak donation periods align with specific campaign triggers and seasonal behaviors.</li>
+                    <li><strong>Campaign Impact:</strong> The <span id="top-campaign-name" class="highlight">...</span> campaign shows the highest engagement.</li>
+                </ul>
+            </div>
 
-        <section>
-            <h2>Visualizations</h2>
-            <div class="visualization-grid">
-                <div class="chart-card">
-                    <h3>Donation Trends</h3>
-                    <img src="../output/charts/donations_trend.png" alt="Donation Trends Chart">
-                </div>
-                <div class="chart-card">
-                    <h3>Donor Contribution</h3>
-                    <img src="../output/charts/repeat_donors.png" alt="Repeat vs One-time Donors Chart">
+            <div class="visuals-panel">
+                <h2>Data Visualizations</h2>
+                <div class="visualization-grid">
+                    <div class="chart-card">
+                        <h3>Monthly Donation Trends</h3>
+                        <div class="img-container">
+                            <img src="../output/charts/donations_trend.png" alt="Donation Trends Chart">
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Donor Loyalty Analysis</h3>
+                        <div class="img-container">
+                            <img src="../output/charts/repeat_donors.png" alt="Repeat vs One-time Donors Chart">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </div>
 
+    <script>
+        async function loadStats() {
+            try {
+                const response = await fetch('data/summary_stats.json');
+                const data = await response.json();
+                
+                document.getElementById('total-donations').textContent = `$${data.total_donations.toLocaleString()}`;
+                document.getElementById('avg-donation').textContent = `$${data.avg_donation.toLocaleString()}`;
+                document.getElementById('total-donors').textContent = data.total_donors.toLocaleString();
+                document.getElementById('repeat-donors-count').textContent = data.repeat_donor_count.toLocaleString();
+                document.getElementById('top-campaign-name').textContent = data.top_campaign;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+        
+        loadStats();
+    </script>
 </body>
-
-
 </html>
