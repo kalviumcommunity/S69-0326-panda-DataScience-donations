@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import os
 
+
 # Set style for plots
 plt.style.use('ggplot')
 sns.set_palette("viridis")
