@@ -9,7 +9,7 @@ plt.style.use('ggplot')
 sns.set_palette("viridis")
 
 # Path configuration
-base_dir = os.path.dirname(os.path.dirname(os.path.abspath(_file_)))
+base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 raw_data_path = os.path.join(base_dir, 'raw_data', 'donations_raw.csv')
 output_dir = os.path.join(base_dir, 'output', 'charts')
 
