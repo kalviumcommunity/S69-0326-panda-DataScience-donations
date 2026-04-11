@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donor Insights | Advanced Analysis Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -36,7 +37,8 @@
     <div class="container">
         <header>
             <h1>Donor Behavior Analysis</h1>
-            <p class="subtitle">Unlocking data-driven strategies for sustainable non-profit growth and donor retention.</p>
+            <p class="subtitle">Unlocking data-driven strategies for sustainable non-profit growth and donor retention.
+            </p>
         </header>
 
         <section class="stats-overview" id="stats">
@@ -64,17 +66,23 @@
 
         <section class="problem-statement reveal" id="problem">
             <h2>The Challenge</h2>
-            <p>Non-profits often operate with limited visibility into donor lifecycle and campaign effectiveness. This comprehensive analysis bridges that gap by identifying high-value periods, donor retention patterns, and optimized engagement triggers.</p>
+            <p>Non-profits often operate with limited visibility into donor lifecycle and campaign effectiveness. This
+                comprehensive analysis bridges that gap by identifying high-value periods, donor retention patterns, and
+                optimized engagement triggers.</p>
         </section>
 
         <section class="main-content">
             <div class="insights-panel reveal" id="findings">
                 <h2>Key Findings</h2>
                 <ul class="insights-list">
-                    <li><strong>Retention is Key:</strong> Repeat donors provide the stable foundation for long-term sustainability.</li>
-                    <li><strong>Cyclical trends:</strong> Peak donation periods align with specific campaign triggers and seasonal behaviors.</li>
-                    <li><strong>Campaign Impact:</strong> The <span id="top-campaign-name" class="highlight">Animal Welfare</span> campaign shows the highest engagement.</li>
-                    <li><strong>High-Value Windows:</strong> Financial spikes correlate with targeted outreach efficiency.</li>
+                    <li><strong>Retention is Key:</strong> Repeat donors provide the stable foundation for long-term
+                        sustainability.</li>
+                    <li><strong>Cyclical trends:</strong> Peak donation periods align with specific campaign triggers
+                        and seasonal behaviors.</li>
+                    <li><strong>Campaign Impact:</strong> The <span id="top-campaign-name" class="highlight">Animal
+                            Welfare</span> campaign shows the highest engagement.</li>
+                    <li><strong>High-Value Windows:</strong> Financial spikes correlate with targeted outreach
+                        efficiency.</li>
                 </ul>
             </div>
 
@@ -123,7 +131,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 DonorInsights Analysis Project. Built for impact.</p>
-            <p>Data Science Excellence</p>
+            <p>Data Science...</p>
         </div>
     </footer>
 
@@ -158,17 +166,17 @@
         // Load Stats Data
         async function loadStats() {
             const isLocalFile = window.location.protocol === 'file:';
-            
+
             try {
                 const response = await fetch('data/summary_stats.json');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const data = await response.json();
-                
+
                 updateUI(data);
                 console.log('Data loaded successfully from JSON.');
             } catch (error) {
                 console.error('Error loading stats:', error);
-                
+
                 // If it's a local file and we have no server, the hardcoded values stay.
                 // We only show the warning if they are missing live updates.
                 if (isLocalFile) {
@@ -225,9 +233,9 @@
             }
         `;
         document.head.appendChild(style);
-        
+
         loadStats();
     </script>
 </body>
+
 </html>
-
