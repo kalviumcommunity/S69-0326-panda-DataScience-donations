@@ -31,3 +31,21 @@ campaigns = ["Education", "Health", "Disaster Relief", "Environment", "Animal We
 
 # Payment methods
 payment_methods = ["UPI", "Credit Card", "Debit Card", "Net Banking"]
+
+data = []
+
+for i in range(num_records):
+    donor = random.choice(donor_ids)
+
+    record = {
+        "donation_id": f"T{10000 + i}",
+        "donor_id": donor,
+        "donation_amount": generate_amount(),
+        "donation_date": random_date(),
+        "campaign_type": random.choice(campaigns),
+        "payment_method": random.choice(payment_methods)
+    }
+
+    data.append(record)
+
+df = pd.DataFrame(data)
