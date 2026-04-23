@@ -4,4 +4,6 @@ df = load_data()
 df = clean_data(df)
 rfm = create_rfm_features(df)
 
+rfm['will_donate_again'] = rfm['frequency'].apply(lambda x: 1 if x > 1 else 0)
+
 print(rfm.head())
