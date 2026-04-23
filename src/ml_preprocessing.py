@@ -27,7 +27,8 @@ def create_rfm_features(df):
     return rfm
 
 # ✅ Save processed data (VERY IMPORTANT)
-
+def save_processed_data(rfm):
+    rfm.to_csv("raw_data/processed_donations.csv", index=False)
 
 # ✅ Main execution
 if __name__ == "__main__":
