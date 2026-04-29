@@ -6,3 +6,10 @@ print(df.head())
 
 X = df[['recency', 'frequency', 'total_amount', 'avg_amount']]
 y = df['will_donate_again']
+
+from sklearn.preprocessing import StandardScaler
+
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+print(X_scaled[:5])
