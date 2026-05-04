@@ -20,3 +20,7 @@ model = LogisticRegression()
 model.fit(X_scaled, y)
 
 print("Model trained")
+
+predictions = model.predict(X_scaled)
+
+print(predictions[:10])
