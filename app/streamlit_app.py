@@ -24,3 +24,8 @@ if st.button("Predict"):
         st.success("Donor Will Donate Again")
     else:
         st.error("Donor Will Not Donate Again")
+
+st.sidebar.header("About")
+st.sidebar.write(
+    "This app predicts donor retention using Machine Learning."
+)
