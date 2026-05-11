@@ -1,4 +1,4 @@
-python id="x3ru0o"
+# python id="x3ru0o"
 models = {
     "Logistic Regression": 0.82,
     "KNN": 0.85,
@@ -7,6 +7,6 @@ models = {
 for model, score in models.items():
     print(model, "Accuracy:", score)
 
-python id="vzy0t2"
+# python id="vzy0t2"
 best_model = max(models, key=models.get)
 print("Best Model:", best_model)
