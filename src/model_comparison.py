@@ -9,3 +9,4 @@ for model, score in models.items():
 
 python id="vzy0t2"
 best_model = max(models, key=models.get)
+print("Best Model:", best_model)
