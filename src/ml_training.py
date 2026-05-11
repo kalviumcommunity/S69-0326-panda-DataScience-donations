@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-df = pd.read_csv("data/processed_donations.csv")
+df = pd.read_csv("raw_data/processed_donations.csv")
 
 print(df.head())
 
