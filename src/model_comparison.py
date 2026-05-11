@@ -6,3 +6,6 @@ models = {
 }
 for model, score in models.items():
     print(model, "Accuracy:", score)
+
+python id="vzy0t2"
+best_model = max(models, key=models.get)
