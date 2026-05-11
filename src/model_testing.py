@@ -1,9 +1,15 @@
 # python id="pvt7u4"
 import pickle
 import numpy as np
+from pathlib import Path
 
-model = pickle.load(open("models/donor_model.pkl", "rb"))
-scaler = pickle.load(open("models/scaler.pkl", "rb"))
+ROOT_DIR = Path(__file__).resolve().parents[1]
+MODEL_DIR = ROOT_DIR / "models"
+
+with open(MODEL_DIR / "donor_model.pkl", "rb") as file:
+    model = pickle.load(file)
+with open(MODEL_DIR / "scaler.pkl", "rb") as file:
+    scaler = pickle.load(file)
 
 test_cases = [
     [5, 8, 2000, 250],
@@ -11,7 +17,6 @@ test_cases = [
 ]
 
 for case in test_cases:
-
     scaled = scaler.transform([case])
     prediction = model.predict(scaled)
 
