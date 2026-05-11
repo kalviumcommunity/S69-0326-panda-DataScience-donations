@@ -1,9 +1,15 @@
 import pickle
 import numpy as np
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+MODEL_DIR = ROOT_DIR / "models"
 
 # Load model
-model = pickle.load(open("models/donor_model.pkl", "rb"))
-scaler = pickle.load(open("models/scaler.pkl", "rb"))
+with open(MODEL_DIR / "donor_model.pkl", "rb") as file:
+    model = pickle.load(file)
+with open(MODEL_DIR / "scaler.pkl", "rb") as file:
+    scaler = pickle.load(file)
 
 # Example donor data
 sample_data = np.array([[10, 5, 1200, 240]])
