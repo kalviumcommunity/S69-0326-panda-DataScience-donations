@@ -3,6 +3,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import GridSearchCV
+
 
 # Load data
 df = pd.read_csv("raw_data/processed_donations.csv")
@@ -32,3 +34,13 @@ knn.fit(X_train_scaled, y_train)
 y_pred = knn.predict(X_test_scaled)
 
 print("KNN Accuracy:", accuracy_score(y_test, y_pred))
+
+
+params = {
+    'n_neighbors': [3, 5, 7, 9]
+}
+
+grid = GridSearchCV(KNeighborsClassifier(), params, cv=5)
+grid.fit(X_train_scaled, y_train)
+
+print("Best KNN Parameters:", grid.best_params_)
