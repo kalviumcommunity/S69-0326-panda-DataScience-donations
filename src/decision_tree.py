@@ -20,3 +20,19 @@ model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 print("Decision Tree Accuracy:", accuracy_score(y_test, y_pred))
+
+from sklearn.model_selection import RandomizedSearchCV
+
+params = {
+    'max_depth': [2, 4, 6, 8, 10]
+}
+
+random_search = RandomizedSearchCV(
+    DecisionTreeClassifier(),
+    params,
+    n_iter=5
+)
+
+random_search.fit(X_train, y_train)
+
+print("Best Decision Tree Params:", random_search.best_params_)
