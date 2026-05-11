@@ -4,3 +4,5 @@ models = {
     "KNN": 0.85,
     "Decision Tree": 0.80
 }
+for model, score in models.items():
+    print(model, "Accuracy:", score)
